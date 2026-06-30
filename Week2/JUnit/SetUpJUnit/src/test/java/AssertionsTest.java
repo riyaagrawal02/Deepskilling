@@ -17,7 +17,7 @@ public class AssertionsTest {
         assertFalse(5 < 3);
 
         assertNull(null);
-      
+
         assertNotNull(new Object());
     }
 }
