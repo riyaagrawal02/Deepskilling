@@ -9,31 +9,19 @@ The repository is organized module-wise following the recommended learning seque
 ## 📂 Repository Structure
 
 ```text
-Week1
+Deepskilling
+│
 ├── DesignPatterns
-│   ├── SingletonPattern
-│   └── FactoryMethodPattern
-└── DSA
-
-Week2
+├── DSA
 ├── PLSQL
-├── JUnit-Mockito
-└── Logging
-
-Week3
-└── SpringCore-Maven
-
-Week4
-└── SpringDataJPA
-
-Week5
-└── SpringREST
-
-Week6
-└── Microservices
-
-Week7
-└── React
+├── JUnit
+├── SpringCore-Maven
+├── SpringDataJPA
+├── SpringREST
+├── Microservices
+├── React
+├── Git
+└── Angular
 ```
 
 ---
