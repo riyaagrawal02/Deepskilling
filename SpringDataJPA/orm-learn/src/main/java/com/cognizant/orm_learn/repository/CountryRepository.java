@@ -13,7 +13,6 @@ import com.cognizant.ormlearn.model.Country;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, String> {
 
-    // Query Method Examples (Spring Data JPA derives SQL from method name)
     List<Country> findByNameContaining(String text);
 
     List<Country> findByNameContainingOrderByNameAsc(String text);

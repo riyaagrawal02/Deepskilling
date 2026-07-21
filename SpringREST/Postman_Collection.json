@@ -1,0 +1,228 @@
+{
+  "info": {
+    "name": "Spring REST API Assessment - Complete Collection",
+    "description": "All REST endpoints for Spring REST with JWT Authentication assessment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "jwt_token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Hello World - Hello World RESTful Web Service",
+      "item": [
+        {
+          "name": "Hello World Greeting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hello/world",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hello", "world"]
+            },
+            "description": "Requirement: Hello World RESTful Web Service"
+          }
+        },
+        {
+          "name": "Greeting Message",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hello/greeting",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hello", "greeting"]
+            }
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/hello/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "hello", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Country Management - REST Country Web Service",
+      "item": [
+        {
+          "name": "Get All Countries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            },
+            "description": "Requirement: REST - Country Web Service"
+          }
+        },
+        {
+          "name": "Get Country by Code",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/countries/IN",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries", "IN"]
+            },
+            "description": "Requirement: REST - Get country based on country code\nExample: Get country with code 'IN' (India)"
+          }
+        },
+        {
+          "name": "Get Country from XML Config",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/countries/xml/config",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries", "xml", "config"]
+            },
+            "description": "Requirement: Spring Core - Load Country from Spring Configuration XML\nReturns Country bean defined in applicationContext.xml"
+          }
+        },
+        {
+          "name": "Add New Country",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"FR\",\n  \"name\": \"France\",\n  \"capital\": \"Paris\",\n  \"continent\": \"Europe\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/countries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries"]
+            },
+            "description": "Add a new country to the system"
+          }
+        },
+        {
+          "name": "Update Country",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"FR\",\n  \"name\": \"French Republic\",\n  \"capital\": \"Paris\",\n  \"continent\": \"Europe\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/countries/FR",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries", "FR"]
+            },
+            "description": "Update an existing country"
+          }
+        },
+        {
+          "name": "Delete Country",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/countries/FR",
+              "host": ["{{base_url}}"],
+              "path": ["api", "countries", "FR"]
+            },
+            "description": "Delete a country by code"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Authentication - Create JWT Token Service",
+      "item": [
+        {
+          "name": "Login - Generate JWT Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Requirement: Create authentication service that returns JWT\n\nDemo Credentials:\nUsername: admin\nPassword: password123\n\nResponse contains JWT token to be used in subsequent authenticated requests"
+          }
+        },
+        {
+          "name": "Validate JWT Token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/auth/validate?token={{jwt_token}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "validate"],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "{{jwt_token}}"
+                }
+              ]
+            },
+            "description": "Validate a JWT token\n\nSteps:\n1. First call 'Login - Generate JWT Token'\n2. Copy the token from response\n3. Set jwt_token variable with copied token\n4. Then call this endpoint to validate"
+          }
+        },
+        {
+          "name": "Test Authenticated Endpoint",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/auth/test",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "test"]
+            },
+            "description": "Test endpoint for authenticated requests\n\nAdd JWT token to Authorization header for protected endpoints"
+          }
+        }
+      ]
+    }
+  ]
+}

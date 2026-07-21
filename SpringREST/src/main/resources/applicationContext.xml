@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 
+    Spring Configuration XML
+    Requirement: Load Country from Spring Configuration XML
+    -->
+
+    <!-- Country Bean Definition - Loaded from XML Configuration -->
+    <bean id="country" class="com.cognizant.rest.model.Country">
+        <constructor-arg name="code" value="XX" />
+        <constructor-arg name="name" value="Sample Country from XML" />
+        <property name="capital" value="Sample Capital" />
+        <property name="continent" value="Sample Continent" />
+    </bean>
+
+    <!-- Alternative: XML configuration with property setter -->
+    <bean id="countryXml" class="com.cognizant.rest.model.Country">
+        <property name="code" value="XY" />
+        <property name="name" value="Country Loaded from Application Context XML" />
+        <property name="capital" value="XML Capital" />
+        <property name="continent" value="XML Continent" />
+    </bean>
+
+</beans>
