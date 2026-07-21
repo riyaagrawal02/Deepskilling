@@ -1,0 +1,212 @@
+{
+  "info": {
+    "name": "Spring Data JPA - Country Management API",
+    "description": "Collection of API endpoints for the Country management system demonstrating Spring Data JPA assessment requirements",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "country_code",
+      "value": "IN",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Get All Countries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries"]
+        },
+        "description": "Retrieves all countries from the database"
+      }
+    },
+    {
+      "name": "2. Get Country by Code (REQUIREMENT: Find by code)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/{{country_code}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "{{country_code}}"]
+        },
+        "description": "Assessment Requirement: Find a country based on country code\nDemonstrates O/R Mapping - Java object ↔ Database record"
+      }
+    },
+    {
+      "name": "3. Search by Name Containing",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/search?text=United",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "search"],
+          "query": [
+            {
+              "key": "text",
+              "value": "United"
+            }
+          ]
+        },
+        "description": "Search countries by name containing text (Query derivation)"
+      }
+    },
+    {
+      "name": "4. Search by Name Sorted",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/search/sorted?text=United",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "search", "sorted"],
+          "query": [
+            {
+              "key": "text",
+              "value": "United"
+            }
+          ]
+        },
+        "description": "Search countries and sort alphabetically by name"
+      }
+    },
+    {
+      "name": "5. Search by Starting Letter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/startsWith?letter=U",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "startsWith"],
+          "query": [
+            {
+              "key": "letter",
+              "value": "U"
+            }
+          ]
+        },
+        "description": "Search countries by starting letter (Query derivation)"
+      }
+    },
+    {
+      "name": "6. Search Using JPQL (REQUIREMENT: HQL/JPQL)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/search/jpql?name=India",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "search", "jpql"],
+          "query": [
+            {
+              "key": "name",
+              "value": "India"
+            }
+          ]
+        },
+        "description": "Assessment Requirement: Demonstrate HQL/JPQL (Hibernate Query Language)\nQuery: SELECT c FROM Country c WHERE c.name LIKE %:name%"
+      }
+    },
+    {
+      "name": "7. Search Using Native SQL (REQUIREMENT: Native Query)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/search/native?name=United",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "search", "native"],
+          "query": [
+            {
+              "key": "name",
+              "value": "United"
+            }
+          ]
+        },
+        "description": "Assessment Requirement: Demonstrate Native SQL Query\nQuery: SELECT * FROM country WHERE co_name LIKE CONCAT('%', :name, '%')"
+      }
+    },
+    {
+      "name": "8. Get All Countries Sorted",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/sorted",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "sorted"]
+        },
+        "description": "Get all countries sorted alphabetically using Native SQL"
+      }
+    },
+    {
+      "name": "9. Add New Country (REQUIREMENT: Add a new country)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"code\": \"SG\",\n  \"name\": \"Singapore\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/countries",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries"]
+        },
+        "description": "Assessment Requirement: Add a new country\nDemonstrates O/R Mapping - Creates new database record from Java object"
+      }
+    },
+    {
+      "name": "10. Update Country",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"code\": \"SG\",\n  \"name\": \"Republic of Singapore\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/countries/SG",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "SG"]
+        },
+        "description": "Update an existing country"
+      }
+    },
+    {
+      "name": "11. Delete Country",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/countries/SG",
+          "host": ["{{base_url}}"],
+          "path": ["api", "countries", "SG"]
+        },
+        "description": "Delete a country by code"
+      }
+    }
+  ]
+}
