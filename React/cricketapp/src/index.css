@@ -1,0 +1,16 @@
+body{
+    font-family: Arial, sans-serif;
+    margin:30px;
+}
+
+h1{
+    color: darkblue;
+}
+
+h2{
+    color: green;
+}
+
+ul{
+    margin-bottom:20px;
+}
