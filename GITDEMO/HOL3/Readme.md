@@ -89,7 +89,6 @@ git branch -d GitNewBranch
 ```bash
 git push
 ```
-
 ---
 
 ## Outcome
