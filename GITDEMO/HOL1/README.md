@@ -257,17 +257,6 @@ Remote Repository (GitHub)
 
 ---
 
-## Files Created
-
-```
-Git/
-└── HOL1/
-    ├── README.md
-    └── welcome.txt
-```
-
----
-
 ## Quick Reference
 
 | Command | Purpose |
