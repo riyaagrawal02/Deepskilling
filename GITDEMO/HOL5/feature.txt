@@ -1,2 +1,2 @@
 Git Rebase Practice.
-Changes from week6 branch.
+Final resolved changes.
