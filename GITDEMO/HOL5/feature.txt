@@ -1,0 +1,3 @@
+Git Rebase Practice.
+Final resolved changes.
+Changes from feature branch.
