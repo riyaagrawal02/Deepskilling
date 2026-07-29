@@ -21,7 +21,6 @@ Deepskilling
 ├── Microservices
 ├── React
 ├── Git
-└── Angular
 ```
 
 ---
